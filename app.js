@@ -30,7 +30,7 @@ app.get("/user/history1",(req, res)=>{
       res.render("history",{'item':result.rows});
     }else{
       console.log(err.message);
-      console.log('Server Stopped for HIstory');
+      console.log('Server Stopped for History');
     }
   })
 })
@@ -48,7 +48,6 @@ app.post("/",(req, res) =>{
     if (req.body.submit == '+') {
         const result = no1 + no2;
         res.send(' ' + result);
-
         client.connect(function (err) {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
@@ -60,7 +59,7 @@ app.post("/",(req, res) =>{
         const result = no1 - no2;
         res.send(' ' + result);
         client.connect( (err) => {
-            var pg = "insert into cal(num1, num2,operator,result,time) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
+            var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
                 console.log("Inserted!");
         })
@@ -70,7 +69,7 @@ app.post("/",(req, res) =>{
         const result = no1 * no2;
         res.send(' ' + result);
         client.connect( (err) => {
-            var pg = "insert into cal(num1, num2,operator,result,time) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
+            var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
                 console.log("Inserted!");
         })
@@ -80,7 +79,7 @@ app.post("/",(req, res) =>{
         const result = no1 / no2;
         res.send(' ' + result);
         client.connect( (err) => {
-            var pg = "insert into cal(num1, num2,operator,result,time) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
+            var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
                 console.log("Inserted!");
         })
@@ -90,7 +89,7 @@ app.post("/",(req, res) =>{
         const result = no1 % no2;
         res.send(' ' + result);
         client.connect( (err) => {
-            var pg = "insert into cal(num1, num2,operator,result,time) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
+            var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
                 console.log("Inserted!")
         })
@@ -100,7 +99,7 @@ app.post("/",(req, res) =>{
         res.send('SomeThing Went Wrong!');
     }
   }
-
+    
     calculate(num1, num2, operator);
 })
 

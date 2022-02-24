@@ -110,6 +110,24 @@
     function oper(val) {
       document.getElementById("equalbtn").value = val;
     }
+
+    
+    window.localStorage.setItem('openOnePage',Date.now());
+    var onLocalStorageEvent = (err) =>
+    {
+      if(err.key == "openOnePage"){
+        window.localStorage.setItem('pageAlreadyOpen', Date.now());
+      }
+      
+        if(err.key == "pageAlreadyOpen"){
+          alert("This page is already open in a tab");
+        window.location.href="index.ejs";
+        return false;  
+        }
+    };
+
+    window.addEventListener('storage', onLocalStorageEvent, false);
+      
   </script>
   </body>
 </html>
