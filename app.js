@@ -47,7 +47,7 @@ app.post("/",(req, res) =>{
     const no2 = Number(req.body.num2);
     if (req.body.submit == '+') {
         const result = no1 + no2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.connect(function (err) {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
@@ -57,7 +57,7 @@ app.post("/",(req, res) =>{
     }
     else if (req.body.submit == '-') {
         const result = no1 - no2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.connect( (err) => {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
@@ -67,7 +67,7 @@ app.post("/",(req, res) =>{
     }
     else if (req.body.submit == '*') {
         const result = no1 * no2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.connect( (err) => {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
@@ -77,7 +77,7 @@ app.post("/",(req, res) =>{
     }
     else if (req.body.submit == '/') {
         const result = no1 / no2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.connect( (err) => {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
@@ -87,7 +87,7 @@ app.post("/",(req, res) =>{
     }
     else if (req.body.submit == '%') {
         const result = no1 % no2;
-        res.send(' ' + result);
+        res.send(' ' + BigInt(result));
         client.connect( (err) => {
             var pg = "insert into cal(first_no, second_no ,operator, sum, doe) values('" + req.body.num1 + "', '" + req.body.num2 + "','" + req.body.submit + "','" + result + "',current_timestamp)";
             client.query(pg, function (err) {
